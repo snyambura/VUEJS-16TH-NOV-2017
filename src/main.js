@@ -5,6 +5,7 @@ new Vue({
     el: '#app',
     data: {
         message: "",
+        seen: true,
         tasks :[
         {
             "name": "attend training"
@@ -22,7 +23,13 @@ new Vue({
             "name": "complete the styling challenge"
         }
 
-    ]
+    ],
+
+        styleObject: {
+            color: 'red',
+            fontSize: '18px'
+        }
+
     },
     methods: {
         deleteObject: function(index) {
@@ -40,6 +47,15 @@ new Vue({
              }
 
         },
+
+
+
+    watch: {
+        displaymsg: function (val) {
+            this.message1 = val + ' ' + this.message
+        },
+
+    },
 
 
     }

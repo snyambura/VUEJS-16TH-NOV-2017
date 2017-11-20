@@ -5,15 +5,26 @@
 </head>
 <body>
 <div id="app">
-    <h3>Add new Task</h3>
-    <input type="text" v-model="message">
-    <input type="button" v-on:click="Add()" value="Add"/>
+    <div v-if="seen">
+        <h3>Add new Task</h3>
+        <input type="text" v-model="message">
 
-    <h3>Pending Tasks </h3>
-    <p v-for="(task, index) in tasks">
-        <span v-text="task.name"></span>
-        <a href="#" v-on:click.prevent="deleteObject(index)">&times;</a>
-    </p>
+        <input type="button" v-on:click="Add()" value="Add"/>
+
+    </div>
+    <div v-else>
+        <h3>Pending Tasks </h3>
+        <p v-for="(task, index) in tasks">
+            <span v-bind:style="styleObject" v-text="task.name"></span>
+            <a href="#" v-on:click.prevent="deleteObject(index)">&times;</a>
+        </p>
+
+    </div>
+    <button v-on:click="seen = !seen">Toggle</button>
+
+
+
+
 
 
 
